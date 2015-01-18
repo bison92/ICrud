@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/r1verside/ICrud</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <releaseNotes>First Release</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>CRUD Abstract</tags>
   </metadata>
