@@ -6,7 +6,7 @@
     <title>$title$</title>
     <authors>bison</authors>
     <owners>Pablo Calderón Recalde</owners>
-    <licenseUrl></licenseUrl>
+    <licenseUrl>http://www.gnu.org/licenses/gpl.txt</licenseUrl>
     <projectUrl>https://github.com/r1verside/ICrud</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>An Abstract Repository Implmentation for Entity Framework, with Entity2DTO / DTO2Entity conversion.</description>
