@@ -51,7 +51,7 @@ public class VentaConversor : IConversor<Venta, VentaDTO>
     }
 }
 ```
->We also need to create a Factory class for your context that Implements IDBFactory 
+>We also need to create a Factory class for our context that Implements IDBFactory 
 
 _DBFactory.cs_
 ```
