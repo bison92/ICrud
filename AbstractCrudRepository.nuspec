@@ -9,7 +9,7 @@
     <licenseUrl></licenseUrl>
     <projectUrl>https://github.com/r1verside/ICrud</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>An Abstract Repository Implmentation for Entity Framework, with Entity2DTO / DTO2Entity conversion.</description>
     <releaseNotes>First Release</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>CRUD Abstract</tags>
