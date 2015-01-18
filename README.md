@@ -8,7 +8,7 @@
 >Let's start by defining a data Class and it's DTO.
 
 _Venta.cs_
-```
+```csharp
 public class Venta
 {
     public long VentaId { get; set; }
@@ -16,7 +16,7 @@ public class Venta
 }
 ```
 _VentaDTO.cs_
-```
+```csharp
 public class VentaDTO
 {
     public long VentaId { get; set; }
@@ -27,7 +27,9 @@ public class VentaDTO
 >We need to define two conversion functions by implmenting the inteface IConversor<TEntity, TDTO>
 
 _VentaConversor.cs_
-```
+```csharp
+using AbstractCrudRepository;
+...
 public class VentaConversor : IConversor<Venta, VentaDTO>
 {
 	public Venta DTO2Entity(VentaDTO dto)
@@ -54,7 +56,9 @@ public class VentaConversor : IConversor<Venta, VentaDTO>
 >We also need to create a Factory class for our context that Implements IDBFactory 
 
 _DBFactory.cs_
-```
+```csharp
+using AbstractCrudRepository;
+...
 public class DBFactory: IDBFactory<MyContextClass>
 {
     public MyContextClass GetInstace()
@@ -66,7 +70,9 @@ public class DBFactory: IDBFactory<MyContextClass>
 >Now we can start defining our **repository** by it's interface that extends ICrud<TEntity, TDTO>
 
 _IVentaRepository.cs_
-```
+```csharp
+using AbstractCrudRepository;
+...
 public interface IVentaRepository: ICrud<long, VentaDTO>
 {
 	// your methods.
@@ -75,7 +81,9 @@ public interface IVentaRepository: ICrud<long, VentaDTO>
 >Finally we write our **repository** by inheriting from AbstractRepository<Key, TEntity, TDTO, TDB> and implementing your repository interface _(ex: IVentaRepository)_
 
 _VentaRepository.cs_
-```
+```csharp
+using AbstractCrudRepository;
+...
 public class VentaRepository : AbstractRepository<long, Venta, VentaDTO, MyContextClass>, IVentaRepository
 {
 	// you need to create a constructor with 2 args,
