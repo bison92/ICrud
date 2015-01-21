@@ -2,8 +2,8 @@
 <package >
   <metadata>
     <id>ICrud</id>
-    <version>1.0.0.4</version>
-    <title>$title$</title>
+    <version>1.0.0.6</version>
+    <title>ICrud</title>
     <authors>Pablo Calderón Recalde</authors>
     <owners>bison</owners>
     <licenseUrl>http://www.gnu.org/licenses/gpl.txt</licenseUrl>

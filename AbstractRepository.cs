@@ -19,9 +19,8 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Linq.Expressions;
+
 namespace ICrud
 {
     public abstract class AbstractRepository<Key, TEntity, TDTO, TDB> : ICrud<Key, TDTO>
