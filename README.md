@@ -28,7 +28,7 @@ public class VentaDTO
 
 _VentaConversor.cs_
 ```csharp
-using AbstractCrudRepository;
+using ICrud;
 ...
 public class VentaConversor : IConversor<Venta, VentaDTO>
 {
@@ -57,7 +57,7 @@ public class VentaConversor : IConversor<Venta, VentaDTO>
 
 _DBFactory.cs_
 ```csharp
-using AbstractCrudRepository;
+using ICrud;
 ...
 public class DBFactory: IDBFactory<MyContextClass>
 {
@@ -71,7 +71,7 @@ public class DBFactory: IDBFactory<MyContextClass>
 
 _IVentaRepository.cs_
 ```csharp
-using AbstractCrudRepository;
+using ICrud;
 ...
 public interface IVentaRepository: ICrud<long, VentaDTO>
 {
@@ -82,7 +82,7 @@ public interface IVentaRepository: ICrud<long, VentaDTO>
 
 _VentaRepository.cs_
 ```csharp
-using AbstractCrudRepository;
+using ICrud;
 ...
 public class VentaRepository : AbstractRepository<long, Venta, VentaDTO, MyContextClass>, IVentaRepository
 {

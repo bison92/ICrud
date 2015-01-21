@@ -21,7 +21,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbstractCrudRepository
+namespace ICrud
 {
     public interface IDBFactory<TDB>
     {

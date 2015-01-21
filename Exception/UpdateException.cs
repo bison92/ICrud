@@ -21,13 +21,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbstractCrudRepository
+namespace ICrud
 {
-    public class UpdateException<TEntity>:Exception
+    public class UpdateException<TEntity> : Exception
     {
-        public UpdateException() :base(String.Format("Se produjo un error intentar actualizar la entidad de tipo {0} en la base de datos", typeof(TEntity).ToString() ))
+        public UpdateException()
+            : base(String.Format("Error ocurred when trying to update an entity of type {0} on the database", typeof(TEntity).ToString()))
         {
-            
+
         }
     }
 }

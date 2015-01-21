@@ -22,9 +22,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-namespace AbstractCrudRepository
+namespace ICrud
 {
-    public abstract class AbstractRepository<K, TEntity, TDTO, TDB> : ICrud<K, TDTO>
+    public abstract class AbstractRepository<Key, TEntity, TDTO, TDB> : ICrud<Key, TDTO>
         where TEntity : class
         where TDB : DbContext
     {
@@ -50,7 +50,7 @@ namespace AbstractCrudRepository
             TDTO result = Conversor.Entity2DTO(entity);
             return result;
         }
-        public TDTO Read(K id)
+        public TDTO Read(Key id)
         {
             TDTO result = default(TDTO);
             using (var ctx = this.DBFactory.GetInstace())
@@ -88,7 +88,7 @@ namespace AbstractCrudRepository
                 return response;
             }
         }
-        public TDTO Delete(K id)
+        public TDTO Delete(Key id)
         {
             TDTO dto = default(TDTO);
             using (var ctx = this.DBFactory.GetInstace())

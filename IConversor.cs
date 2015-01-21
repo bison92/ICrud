@@ -20,9 +20,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AbstractCrudRepository
+namespace ICrud
 {
-    public interface IConversor<T,TDTO>
+    public interface IConversor<T, TDTO>
     {
         T DTO2Entity(TDTO dto);
         TDTO Entity2DTO(T entity);

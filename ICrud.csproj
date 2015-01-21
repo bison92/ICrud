@@ -7,8 +7,8 @@
     <ProjectGuid>{6B036934-495D-4162-A860-E36BCBE67C33}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AbstractCrudRepository</RootNamespace>
-    <AssemblyName>AbstractCrudRepository</AssemblyName>
+    <RootNamespace>ICrud</RootNamespace>
+    <AssemblyName>ICrud</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

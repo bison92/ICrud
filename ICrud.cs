@@ -21,14 +21,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbstractCrudRepository
+namespace ICrud
 {
-    public interface ICrud <K,TDTO>
+    public interface ICrud<Key, TDTO>
     {
         TDTO Create(TDTO EntityDTO);
-        TDTO Read(K id);
+        TDTO Read(Key id);
         IList<TDTO> List();
         TDTO Update(TDTO EntityDTO);
-        TDTO Delete(K id);
+        TDTO Delete(Key id);
     }
 }

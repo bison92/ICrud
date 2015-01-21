@@ -21,13 +21,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbstractCrudRepository
+namespace ICrud
 {
-    public class CreateException<TEntity>: Exception
+    public class CreateException<TEntity> : Exception
     {
-        public CreateException() :base(String.Format("Se produjo un error intentar crear la entidad de tipo {0} en la base de datos", typeof(TEntity).ToString() ))
+        public CreateException()
+            : base(String.Format("Error ocurred when trying to insert an entity of type {0} on the database", typeof(TEntity).ToString()))
         {
-            
+
         }
     }
 }
