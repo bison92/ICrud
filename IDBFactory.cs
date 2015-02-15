@@ -19,6 +19,6 @@ namespace ICrud
 {
     public interface IDBFactory<TDB>
     {
-        TDB GetInstace();
+        TDB GetInstance();
     }
 }
