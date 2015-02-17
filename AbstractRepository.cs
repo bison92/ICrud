@@ -39,6 +39,7 @@ namespace ICrud
         public virtual TDTO Create(TDTO dto)
         {
             TEntity entity = Conversor.DTO2Entity(dto);
+            TDTO result = default(TDTO);
             using (var ctx = this.DBFactory.GetInstance())
             {
                 entity = ctx.Set<TEntity>().Add(entity);
@@ -48,15 +49,18 @@ namespace ICrud
                     throw new CreateException<TEntity>();
                 }
             }
-            TDTO result = Conversor.Entity2DTO(entity);
+            if (entity != null)
+            {
+                result = Conversor.Entity2DTO(entity);
+            }
             return result;
         }
         protected TDTO Read(Expression<Func<TEntity, bool>> findPredicate, lazyLoad lazy = null)
         {
             TDTO result = default(TDTO);
+            TEntity entity;
             using (var ctx = this.DBFactory.GetInstance())
             {
-                TEntity entity;
                 entity = ctx.Set<TEntity>().Where(findPredicate).FirstOrDefault();
                 if (entity != null)
                 {
@@ -64,22 +68,26 @@ namespace ICrud
                     {
                         lazy(ref entity);
                     }
-                    result = Conversor.Entity2DTO(entity);
+                   
                 }
+            }
+            if (entity != null)
+            {
+                result = Conversor.Entity2DTO(entity);
             }
             return result;
         }
         public virtual TDTO Read(Key id)
         {
             TDTO result = default(TDTO);
+            TEntity entity;
             using (var ctx = this.DBFactory.GetInstance())
             {
-                TEntity entity;
                 entity = ctx.Set<TEntity>().Find(id);
-                if (entity != null)
-                {
-                    result = Conversor.Entity2DTO(entity);
-                }
+            }
+            if (entity != null)
+            {
+                result = Conversor.Entity2DTO(entity);
             }
             return result;
         }
@@ -87,25 +95,30 @@ namespace ICrud
         public virtual IList<TDTO> List()
         {
             IList<TDTO> result = default(IList<TDTO>);
+            List<TEntity> rowSet = default(List<TEntity>);
             using (var ctx = this.DBFactory.GetInstance())
             {
-                result = ctx.Set<TEntity>().ToList().ConvertAll(e => Conversor.Entity2DTO(e));
+                rowSet = ctx.Set<TEntity>().ToList();
             }
+            result = rowSet.ConvertAll(e => Conversor.Entity2DTO(e));
             return result;
         }
         protected IList<TDTO> List(Expression<Func<TEntity, bool>> findPredicate)
         {
             IList<TDTO> result = default(IList<TDTO>);
+            List<TEntity> rowSet = default(List<TEntity>);
             using (var ctx = this.DBFactory.GetInstance())
             {
-                result = ctx.Set<TEntity>().Where(findPredicate).ToList().ConvertAll(e => Conversor.Entity2DTO(e));
+                rowSet = ctx.Set<TEntity>().Where(findPredicate).ToList();
             }
+            result = rowSet.ConvertAll(e => Conversor.Entity2DTO(e));
             return result;
         }
         public abstract TDTO Update(TDTO dto);
         protected TDTO Update(TDTO dto, Expression<Func<TEntity, bool>> findPredicate, lazyLoad lazy = null)
         {
             TEntity nuevaEntity = Conversor.DTO2Entity(dto);
+            TDTO response = default(TDTO);
             using (var ctx = this.DBFactory.GetInstance())
             {
                 TEntity antiguaEntity = ctx.Set<TEntity>().FirstOrDefault(findPredicate);
@@ -116,35 +129,46 @@ namespace ICrud
                 ctx.Entry<TEntity>(antiguaEntity).CurrentValues.SetValues(nuevaEntity);
                 ctx.SaveChanges();
                 nuevaEntity = ctx.Set<TEntity>().FirstOrDefault(findPredicate);
-                TDTO response = Conversor.Entity2DTO(nuevaEntity);
-                return response;
             }
+            if (nuevaEntity != null)
+            {
+                response = Conversor.Entity2DTO(nuevaEntity);
+            }
+            return response;
         }
         public virtual TDTO Delete(Key id)
         {
             TDTO dto = default(TDTO);
+            TEntity deleted = default(TEntity);
             using (var ctx = this.DBFactory.GetInstance())
             {
-                TEntity deleted = ctx.Set<TEntity>().Find(id);
+                deleted = ctx.Set<TEntity>().Find(id);
                 ctx.Set<TEntity>().Remove(deleted);
-                dto = Conversor.Entity2DTO(deleted);
                 ctx.SaveChanges();
+            }
+            if (deleted != null)
+            {
+                dto = Conversor.Entity2DTO(deleted);
             }
             return dto;
         }
         protected TDTO Delete(Expression<Func<TEntity, bool>> findPredicate, deleteFunction doDelete, lazyLoad lazy = null)
         {
             TDTO dto = default(TDTO);
+            TEntity deleted = default(TEntity);
             using (var ctx = this.DBFactory.GetInstance())
             {
-                TEntity deleted = ctx.Set<TEntity>().Where(findPredicate).FirstOrDefault();
+                deleted = ctx.Set<TEntity>().Where(findPredicate).FirstOrDefault();
                 doDelete(ref deleted);
                 if (lazy != null)
                 {
                     lazy(ref deleted);
                 }
-                dto = Conversor.Entity2DTO(deleted);
                 ctx.SaveChanges();
+            }
+            if (deleted != null)
+            {
+                dto = Conversor.Entity2DTO(deleted);
             }
             return dto;
         }

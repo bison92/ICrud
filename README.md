@@ -4,6 +4,7 @@
 >It makes possible to create both Repository Interface and Class by extending the AbstractRepository.cs Abstract Class and the ICrud.cs Interface. This new repository comes with Create, Read, List, Update and Delete methods ready to work with your entities and dtos.
 
 ## Changelog
+1.0.1.3 Now the conversion between entities and DTOs is made out of the dbContext so the dependant entities won't get loaded by mistake.
 1.0.1.1 Protected methods now have a callback delegate wich gets the entity by ref inside context, so you can load any related entity by using.
 1.0.1.0 Added Protected methods to make possible virtual deletion of entities (through a boolean property).
 1.0.0.x First releases of the package. Minor bug fixing and testing. Simple base CR(L)UD repository.
